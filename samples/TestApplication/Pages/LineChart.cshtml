@@ -10,13 +10,13 @@
 
 @functions{
 
-    public ChartJSChart<ChartJsLineDataset> blazorLineChartJS { get; set; } = new ChartJSChart<ChartJsLineDataset>();
+    public ChartJSLineChart blazorLineChartJS { get; set; } = new ChartJSLineChart();
     ChartJsLineChart lineChartJs;
 
     protected override void OnInit()
     {
 
-        blazorLineChartJS = new ChartJSChart<ChartJsLineDataset>()
+        blazorLineChartJS = new ChartJSLineChart()
         {
             ChartType = "line",
             CanvasId = "myFirstLineChart",
@@ -26,7 +26,7 @@
                 Display = true,
                 Responsive = false
             },
-            Data = new ChartJsData<ChartJsLineDataset>()
+            Data = new ChartJsLineData()
             {
                 Labels = new List<string>() { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" },
                 Datasets = new List<ChartJsLineDataset>()

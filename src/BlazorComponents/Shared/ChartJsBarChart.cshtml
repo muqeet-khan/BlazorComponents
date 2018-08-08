@@ -9,7 +9,7 @@
 
 @functions {
     [Parameter]
-    ChartJSChart<ChartJsBarDataset> Chart { get; set; }
+    ChartJSBarChart Chart { get; set; }
     [Parameter]
     int Width { get; set; } = 400;
     [Parameter]
@@ -20,7 +20,7 @@
         ChartJSInterop.InitializeBarChart(Chart);
     }
 
-    public void UpdateChart(ChartJSChart<ChartJsBarDataset> updatedChart)
+    public void UpdateChart(ChartJSBarChart updatedChart)
     {
         ChartJSInterop.UpdateBarChart(updatedChart);
     }

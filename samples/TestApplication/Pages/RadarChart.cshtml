@@ -10,13 +10,13 @@
 
 @functions {
 
-    public ChartJSChart<ChartJSRadarDataset> blazorRadarChartJS { get; set; } = new ChartJSChart<ChartJSRadarDataset>();
+    public ChartJSRadarChart blazorRadarChartJS { get; set; } = new ChartJSRadarChart();
     ChartJsRadarChart radarChartJs;
 
     protected override void OnInit()
     {
 
-        blazorRadarChartJS = new ChartJSChart<ChartJSRadarDataset>()
+        blazorRadarChartJS = new ChartJSRadarChart()
         {
             ChartType = "line",
             CanvasId = "myFirstRadarChart",
@@ -25,7 +25,7 @@
                 Text = "Sample chart from Blazor",
                 Display = true
             },
-            Data = new ChartJsData<ChartJSRadarDataset>()
+            Data = new ChartJsRadarData()
             {
                 Labels = new List<string>() { "Eating", "Drinking", "Social", "Coding", "Cycling", "Running" },
                 Datasets = new List<ChartJSRadarDataset>()
