@@ -12,12 +12,12 @@
 
 @functions {
 
-    public ChartJSChart<ChartJsBarDataset> blazorBarChartJS { get; set; } = new ChartJSChart<ChartJsBarDataset>();
+    public ChartJSBarChart blazorBarChartJS { get; set; } = new ChartJSBarChart();
     ChartJsBarChart barChartJs;
 
     protected override void OnInit()
     {
-        blazorBarChartJS = new ChartJSChart<ChartJsBarDataset>()
+        blazorBarChartJS = new ChartJSBarChart()
         {
             ChartType = "bar",
             CanvasId = "myFirstBarChart",
@@ -27,7 +27,7 @@
                 BorderWidth = 1,
                 Display = true
             },
-            Data = new ChartJsData<ChartJsBarDataset>()
+            Data = new ChartJsBarData()
             {
                 Labels = new List<string>() { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" },
                 Datasets = new List<ChartJsBarDataset>()
