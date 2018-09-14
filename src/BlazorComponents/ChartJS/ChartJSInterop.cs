@@ -34,5 +34,15 @@ namespace BlazorComponents.ChartJS
         {
             return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.UpdateRadarChart", new[] { radarChart });
         }
+
+        public static Task<bool> InitializePieChart(ChartJSPieChart pieChart)
+        {
+            return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.InitializePieChart", new[] { pieChart });
+        }
+
+        public static Task<bool> UpdatePieChart(ChartJSPieChart pieChart)
+        {
+            return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.UpdatePieChart", new[] { pieChart });
+        }
     }
 }

@@ -44,7 +44,7 @@
                         new ChartJsBarDataset()
                         {
                         Label = "# of Votes from blazor",
-                        BackgroundColor = "#cc65fe",
+                        BackgroundColor = new List<string>(){"#cc65fe" },
                         BorderColor = "#cc65fe",
                         PointHoverRadius = 2,
                         Data = new List<double>(){ 19.187,12.2253,5.5,3,3,2}
@@ -52,7 +52,7 @@
                         new ChartJsBarDataset()
                         {
                         Label = "# of Likes from blazor",
-                        BackgroundColor = "#36a2eb",
+                        BackgroundColor = new List<string>(){"#36a2eb" },
                         BorderColor = "#36a2eb",
                         PointHoverRadius = 2,
                         Data = new List<int>(){ 30,10,15,13,13,12}.Select<int,double>(i=> i).ToList()
@@ -78,7 +78,7 @@
             {
                 new ChartJsLineDataset()
                 {
-                    BackgroundColor = "#ff6384",
+                    BackgroundColor = new List<string>(){"#ff6384" },
                     BorderColor = "#ff6384",
                     Label = "# of Votes from blazor",
                     Data = new List<int>{ 19,12,5,3,3,2}.Select<int,double>(i=> i).ToList(),

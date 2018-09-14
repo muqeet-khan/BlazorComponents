@@ -18,7 +18,7 @@ namespace BlazorComponents.ChartJS
         /// AS-IS: We only accept colors as string values. Normal colors and HTML Hex colors are ok to use.
         /// TODO: Accept some form of actual color information rathen than strings.
         /// </summary>
-        public string BackgroundColor { get; set; }
+        public List<string> BackgroundColor { get; set; } = new List<string>();
         /// <summary>
         /// The color of the line
         /// AS-IS: We only accept string colors.
