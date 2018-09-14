@@ -1,0 +1,82 @@
+﻿@page "/PieChart"
+@using BlazorComponents.Shared
+
+
+<h2>Chart JS charts using Blazor</h2>
+<div class="row">
+    <button class="btn btn-primary" onclick="@UpdateChart">Update Chart </button>
+</div>
+<ChartJsPieChart ref="radarChartJs" Chart="@blazorPieChartJS" Width="600" Height="300"/>
+
+@functions {
+
+    public ChartJSPieChart blazorPieChartJS { get; set; } = new ChartJSPieChart();
+    ChartJsPieChart radarChartJs;
+
+    protected override void OnInit()
+    {
+
+        blazorPieChartJS = new ChartJSPieChart()
+        {
+            ChartType = "pie",
+            CanvasId = "myFirstPieChart",
+            Options = new ChartJsOptions()
+            {
+                Text = "Sample chart from Blazor",
+                Display = true
+            },
+            Data = new ChartJsPieData()
+            {
+                Labels = new List<string>() { "Green", "Blue", "Gray", "Purple", "Yellow", "Red", "Black" },
+                Datasets = new List<ChartJsPieDataset>()
+            {
+                new ChartJsPieDataset()
+                {
+                    BackgroundColor = new List<string> {
+                            "#2ecc71",
+                            "#3498db",
+                            "#95a5a6",
+                            "#9b59b6",
+                            "#f1c40f",
+                            "#e74c3c",
+                            "#34495e"
+                        },
+                        BorderColor = "#ffffff",
+                        Label = "# of Votes from blazor",
+                        Data = new List<int>{ 12, 19, 3, 17, 28, 24, 7}.Select<int,double>(i=> i).ToList(),
+
+                }
+            }
+            }
+        };
+    }
+
+
+    public void UpdateChart()
+    {
+        //Update existing dataset
+        blazorPieChartJS.Data.Labels.Add($"New{DateTime.Now.Second}");
+        var firstDataSet = blazorPieChartJS.Data.Datasets[0];
+        firstDataSet.Data.Add(DateTime.Now.Second);
+
+        //Add new dataset
+        //blazorPieChartJS.Data.Datasets.Add(new ChartJsPieDataset()
+        //{
+        //    BackgroundColor = new List<string> {
+        //                    "#2ecc71",
+        //                    "#3498db",
+        //                    "#95a5a6",
+        //                    "#9b59b6",
+        //                    "#f1c40f",
+        //                    "#e74c3c",
+        //                    "#34495e"
+        //                },
+        //    BorderColor = "#ffffff",
+        //    Label = "# of Votes from blazor",
+        //    Data = new List<double> { 12.5, 19.97, 3.25, 17.75, 28, 24, 7 },
+        //});
+
+        //radarChartJs.UpdateChart(blazorPieChartJS);
+    }
+
+}

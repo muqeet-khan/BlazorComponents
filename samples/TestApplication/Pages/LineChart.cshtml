@@ -33,7 +33,7 @@
                  {
                         new ChartJsLineDataset()
                         {
-                            BackgroundColor = "#ff6384",
+                            BackgroundColor = new List<string>(){"#ff6384" },
                             BorderColor = "#ff6384",
                             Label = "# of Votes from blazor",
                             Data = new List<int>{ 19,12,5,3,3,2}.Select<int,double>(i=> i).ToList(),

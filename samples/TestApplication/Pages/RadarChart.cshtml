@@ -32,7 +32,7 @@
             {
                 new ChartJSRadarDataset()
                 {
-                    BackgroundColor = "#ff6384",
+                    BackgroundColor = new List<string>(){"#ff6384" },
                     Label = "1st Dataset",
                     Data = new List<double>{19.195,12.75,5.25,3,3,2},
                     BorderWidth = 2,
@@ -57,7 +57,7 @@
         //Add new dataset
         blazorRadarChartJS.Data.Datasets.Add(new ChartJSRadarDataset()
         {
-            BackgroundColor = "#cc65fe",
+            BackgroundColor = new List<string>() { "#cc65fe" },
             BorderColor = "#cc65fe",
             Label = "2nd Dataset",
             Data = new List<int> { 20, 21, 12, 3, 4, 4 }.Select<int, double>(i => i).ToList(),
