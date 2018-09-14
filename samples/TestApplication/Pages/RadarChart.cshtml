@@ -34,7 +34,7 @@
                 {
                     BackgroundColor = "#ff6384",
                     Label = "1st Dataset",
-                    Data = new List<int>{ 19,12,5,3,3,2},
+                    Data = new List<double>{19.195,12.75,5.25,3,3,2},
                     BorderWidth = 2,
                     RadarChartPointStyle = RadarChartPointStyles.star,
                     PointBackgroundColor = "#a4cef0",
@@ -60,7 +60,7 @@
             BackgroundColor = "#cc65fe",
             BorderColor = "#cc65fe",
             Label = "2nd Dataset",
-            Data = new List<int> { 20, 21, 12, 3, 4, 4 },
+            Data = new List<int> { 20, 21, 12, 3, 4, 4 }.Select<int, double>(i => i).ToList(),
             BorderWidth = 2,
             PointRadius = 3,
             PointBorderWidth = 1

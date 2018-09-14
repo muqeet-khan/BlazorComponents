@@ -1,4 +1,4 @@
-﻿@page "/"
+﻿@page "/backup"
 @using BlazorComponents.Shared
 
 <div class="container">
@@ -17,7 +17,6 @@
 
     protected override void OnInit()
     {
-
         blazorBarChartJS = new ChartJSBarChart()
         {
             ChartType = "bar",
@@ -60,7 +59,7 @@
         blazorBarChartJS.Data.Labels.Add($"New{DateTime.Now.Second}");
         var firstDataSet = blazorBarChartJS.Data.Datasets[0];
         firstDataSet.Data.Add(DateTime.Now.Second);
-        //var done = await barChartJs.UpdateChart();
+        StateHasChanged();
         //Add new dataset
         //blazorLineChartJS.Data.Datasets.Add(new ChartJsLineDataset()
         //{
@@ -76,7 +75,7 @@
 
         //var done = await barChartJs.UpdateChart(blazorBarChartJS);
         //StateHasChanged();
-
+        
         return true;
     }
 }
