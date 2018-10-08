@@ -15,8 +15,8 @@ Don't know what Blazor is? Read [here](https://github.com/aspnet/Blazor)
 
 Complete all Blazor dependencies.
 
-1. Latest VS Preview
-2. DotNetCore 2.1 Preview 2
+1. Visual Studio 2017 (15.8 or later)
+2. DotNetCore 2.1 (2.1.402 or later).
 
 
 ## Installation 
@@ -46,52 +46,64 @@ dotnet add package BlazorComponents
 ```
 
 ```csharp
-@functions{
+@functions {
 
-    public ChartJSChart<ChartJsLineDataset> blazorLineChartJS { get; set; } = new ChartJSChart<ChartJsLineDataset>();
-    ChartJsLineChart lineChartJs;
+    public ChartJSBarChart blazorBarChartJS { get; set; } = new ChartJSBarChart();
+    ChartJsBarChart barChartJs;
 
     protected override void OnInit()
     {
 
-        blazorLineChartJS = new ChartJSChart<ChartJsLineDataset>()
+        blazorBarChartJS = new ChartJSBarChart()
         {
-            ChartType = "line",
-            CanvasId = "myFirstLineChart",
+            ChartType = "bar",
+            CanvasId = "myFirstBarChart",
             Options = new ChartJsOptions()
             {
                 Text = "Sample chart from Blazor",
-                Display = true,
-                Responsive = false
+                BorderWidth = 1,
+                Display = true
             },
-            Data = new ChartJsData<ChartJsLineDataset>()
+            Data = new ChartJsBarData()
             {
                 Labels = new List<string>() { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" },
-                Datasets = new List<ChartJsLineDataset>()
-                 {
-                        new ChartJsLineDataset()
-                        {
-                            BackgroundColor = "#ff6384",
-                            BorderColor = "#ff6384",
-                            Label = "# of Votes from blazor",
-                            Data = new List<int>{ 19,12,5,3,3,2},
-                            Fill = false,
-                            BorderWidth = 2,
-                            PointRadius = 3,
-                            PointBorderWidth=1
-                        }
-                 }
+                Datasets = new List<ChartJsBarDataset>()
+                {
+                    new ChartJsBarDataset()
+                    {
+                        Label = "# of Votes from blazor",
+                        BackgroundColor = new List<string>(){"#cc65fe" },
+                        BorderColor = "#cc65fe",
+                        PointHoverRadius = 2,
+                        Data = new List<double>(){ 19.187,12.2253,5.5,3,3,2}
+                    },
+                    new ChartJsBarDataset()
+                    {
+                        Label = "# of Likes from blazor",
+                        BackgroundColor = new List<string>() {
+                            "#a4cef0",
+                            "#3498db",
+                            "#95a5a6",
+                            "#9b59b6",
+                            "#f1c40f",
+                            "#e74c3c",
+                            "#34495e" },
+                        BorderColor = "#36a2eb",
+                        PointHoverRadius = 2,
+                        Data = new List<int>(){ 30,10,15,13,13,12}.Select<int,double>(i=> i).ToList()
+                    }
+                }
             }
         };
     }
 
-    public void UpdateChart()
+    public async Task<bool> UpdateChart()
     {
         //Update existing dataset
-        blazorLineChartJS.Data.Labels.Add($"New{DateTime.Now.Second}");
-        var firstDataSet = blazorLineChartJS.Data.Datasets[0];
+        blazorBarChartJS.Data.Labels.Add($"New{DateTime.Now.Second}");
+        var firstDataSet = blazorBarChartJS.Data.Datasets[0];
         firstDataSet.Data.Add(DateTime.Now.Second);
-
+        
         //Add new dataset
         //blazorLineChartJS.Data.Datasets.Add(new ChartJsLineDataset()
         //{
@@ -105,7 +117,7 @@ dotnet add package BlazorComponents
         //    PointBorderWidth = 1
         //});
 
-        lineChartJs.UpdateChart(blazorLineChartJS);
+        return true;
     }
 }
 ```
