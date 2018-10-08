@@ -10,7 +10,7 @@
 @functions {
 
     [Parameter]
-    ChartJSChart<ChartJSRadarDataset> Chart { get; set; }
+    ChartJSRadarChart Chart { get; set; }
     [Parameter]
     int Width { get; set; } = 200;
     [Parameter]
@@ -23,7 +23,7 @@
         ChartJSInterop.InitializeRadarChart(Chart);
     }
 
-    public void UpdateChart(ChartJSChart<ChartJSRadarDataset> updatedChart)
+    public void UpdateChart(ChartJSRadarChart updatedChart)
     {
         ChartJSInterop.UpdateRadarChart(updatedChart);
     }

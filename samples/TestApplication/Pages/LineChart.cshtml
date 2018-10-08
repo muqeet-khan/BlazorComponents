@@ -10,13 +10,13 @@
 
 @functions{
 
-    public ChartJSChart<ChartJsLineDataset> blazorLineChartJS { get; set; } = new ChartJSChart<ChartJsLineDataset>();
+    public ChartJSLineChart blazorLineChartJS { get; set; } = new ChartJSLineChart();
     ChartJsLineChart lineChartJs;
 
     protected override void OnInit()
     {
 
-        blazorLineChartJS = new ChartJSChart<ChartJsLineDataset>()
+        blazorLineChartJS = new ChartJSLineChart()
         {
             ChartType = "line",
             CanvasId = "myFirstLineChart",
@@ -26,17 +26,17 @@
                 Display = true,
                 Responsive = false
             },
-            Data = new ChartJsData<ChartJsLineDataset>()
+            Data = new ChartJsLineData()
             {
                 Labels = new List<string>() { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" },
                 Datasets = new List<ChartJsLineDataset>()
                  {
                         new ChartJsLineDataset()
                         {
-                            BackgroundColor = "#ff6384",
+                            BackgroundColor = new List<string>(){"#ff6384" },
                             BorderColor = "#ff6384",
                             Label = "# of Votes from blazor",
-                            Data = new List<int>{ 19,12,5,3,3,2},
+                            Data = new List<int>{ 19,12,5,3,3,2}.Select<int,double>(i=> i).ToList(),
                             Fill = false,
                             BorderWidth = 2,
                             PointRadius = 3,
@@ -68,5 +68,6 @@
         //});
 
         lineChartJs.UpdateChart(blazorLineChartJS);
+        StateHasChanged();
     }
 }

@@ -12,13 +12,13 @@ namespace BlazorComponents.ChartJS
         /// Actual data. This is an int array.
         /// TO-DO: Explore if it makes any sense to have this as decimal.
         /// </summary>
-        public List<int> Data { get; set; } = new List<int>();
+        public List<double> Data { get; set; } = new List<double>();
         /// <summary>
         /// The fill color under the line. 
         /// AS-IS: We only accept colors as string values. Normal colors and HTML Hex colors are ok to use.
         /// TODO: Accept some form of actual color information rathen than strings.
         /// </summary>
-        public string BackgroundColor { get; set; }
+        public List<string> BackgroundColor { get; set; } = new List<string>();
         /// <summary>
         /// The color of the line
         /// AS-IS: We only accept string colors.

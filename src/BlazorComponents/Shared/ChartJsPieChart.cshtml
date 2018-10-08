@@ -8,15 +8,23 @@
 </div>
 
 @functions {
+
     [Parameter]
-    ChartJSBarChart Chart { get; set; }
+    ChartJSPieChart Chart { get; set; }
     [Parameter]
-    int Width { get; set; } = 400;
+    int Width { get; set; } = 200;
     [Parameter]
-    int Height { get; set; } = 400;
+    int Height { get; set; } = 200;
+
+    private string ChartjsChart { get; set; } = "";
 
     protected override void OnAfterRender()
     {
-        ChartJSInterop.InitializeBarChart(Chart);
+        ChartJSInterop.InitializePieChart(Chart);
+    }
+
+    public void UpdateChart(ChartJSPieChart updatedChart)
+    {
+        ChartJSInterop.UpdatePieChart(updatedChart);
     }
 }
