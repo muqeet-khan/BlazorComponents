@@ -20,13 +20,14 @@
     <PackageProjectUrl>https://github.com/muqeet-khan/BlazorComponents</PackageProjectUrl>
     <PackageTags>Blazor Components ChartJS</PackageTags>
     <PackageSummary>Library of useful components to be used within Blazor. Starting off with a simple ChartJS port to Blazor.</PackageSummary>
-    <PackageReleaseNotes>Updated to Blazor 0.5.1</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated to Blazor 0.6.0</PackageReleaseNotes>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <Version>0.4</Version>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.5.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.5.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Browser" Version="0.6.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Blazor.Build" Version="0.6.0" />
   </ItemGroup>
 
   <ItemGroup>
