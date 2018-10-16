@@ -42,7 +42,7 @@ dotnet add package BlazorComponents
 <div class="row">
     <button class="btn btn-primary" onclick="@UpdateChart">Update Chart </button>
 </div>
-<ChartJsLineChart ref="lineChartJs" Chart="@blazorLineChartJS" Width="600" Height="300" />
+<ChartJsBarChart ref="barChartJs" Chart="@blazorBarChartJS" Width="600" Height="300" />
 ```
 
 ```csharp
@@ -130,6 +130,13 @@ dotnet add package BlazorComponents
     </script>
 ```
 
+3. In _ViewImports.cshtml add:
+
+```html
+    @using BlazorComponents.ChartJS
+    @using BlazorComponents.Shared
+    @addTagHelper *,BlazorComponents
+```
 
 ## Sample Output
 
