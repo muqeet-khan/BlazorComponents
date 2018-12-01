@@ -62,7 +62,20 @@ dotnet add package BlazorComponents
             {
                 Text = "Sample chart from Blazor",
                 BorderWidth = 1,
-                Display = true
+                Display = true,
+				Scales = new ChartJsScale()
+				{
+					YAxes = new List<ChartJsYAxes>()
+					{
+						new ChartJsYAxes()
+						{
+							Ticks = new ChartJsTicks()
+							{
+								BeginAtZero = true
+							}
+						}
+					}
+				}
             },
             Data = new ChartJsBarData()
             {
