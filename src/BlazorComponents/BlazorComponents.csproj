@@ -22,7 +22,7 @@
     <PackageSummary>Library of useful components to be used within Blazor. Starting off with a simple ChartJS port to Blazor.</PackageSummary>
     <PackageReleaseNotes>Updated to Blazor 0.7.0. </PackageReleaseNotes>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
-    <PackageReleaseNotes>https://github.com/muqeet-khan/BlazorComponents/blob/master/NOTES.md</PackageReleaseNotes>
+    <PackageReleaseNotes>https://github.com/muqeet-khan/BlazorComponents/blob/master/changelog.md</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
