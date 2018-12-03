@@ -9,7 +9,7 @@
     <IsPackable>true</IsPackable>
     <OutputType>library</OutputType>
     <LangVersion>7.3</LangVersion>
-    <VersionPrefix>0.4</VersionPrefix>
+    <VersionPrefix>0.5</VersionPrefix>
     <!--<VersionSuffix>alpha-$(PoorMansBuildNumber)</VersionSuffix>-->
     <Title>BlazorComponents</Title>
     <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
@@ -18,10 +18,11 @@
     <Description>Library of useful components to be used within Blazor. Starting off with a simple ChartJS port to Blazor.</Description>
     <RepositoryUrl>https://github.com/muqeet-khan/BlazorComponents</RepositoryUrl>
     <PackageProjectUrl>https://github.com/muqeet-khan/BlazorComponents</PackageProjectUrl>
-    <PackageTags>Blazor Components ChartJS</PackageTags>
+    <PackageTags>Blazor Components;ChartJS;Blazor</PackageTags>
     <PackageSummary>Library of useful components to be used within Blazor. Starting off with a simple ChartJS port to Blazor.</PackageSummary>
-    <PackageReleaseNotes>Updated to Blazor 0.6.0. There are breaking changes in this release. Take a look at https://github.com/muqeet-khan/BlazorComponents/blob/master/NOTES.md </PackageReleaseNotes>
+    <PackageReleaseNotes>Updated to Blazor 0.7.0. </PackageReleaseNotes>
     <PackageLicenseUrl>https://opensource.org/licenses/MIT</PackageLicenseUrl>
+    <PackageReleaseNotes>https://github.com/muqeet-khan/BlazorComponents/blob/master/NOTES.md</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
