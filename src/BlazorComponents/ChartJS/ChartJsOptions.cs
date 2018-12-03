@@ -6,5 +6,6 @@
         public bool Display { get; set; } = false;
         public int BorderWidth { get; set; } = 1;
         public bool Responsive { get; set; } = false;
+        public ChartJsScale Scales { get; set; }
     }
 }
