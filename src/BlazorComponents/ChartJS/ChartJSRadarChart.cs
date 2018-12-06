@@ -2,7 +2,7 @@
 
 namespace BlazorComponents.ChartJS
 {
-    public class ChartJSRadarChart
+    public class ChartJSRadarChart : IChart
     {
         public string ChartType { get; set; } = "bar";
         public ChartJsRadarData Data { get; set; }

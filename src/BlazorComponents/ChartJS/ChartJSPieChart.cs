@@ -2,7 +2,7 @@
 
 namespace BlazorComponents.ChartJS
 {
-    public class ChartJSPieChart
+    public class ChartJSPieChart : IChart
     {
         public string ChartType { get; set; } = "pie";
         public ChartJsPieData Data { get; set; }
