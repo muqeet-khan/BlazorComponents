@@ -63,14 +63,16 @@ dotnet add package BlazorComponents
                 Text = "Sample chart from Blazor",
                 BorderWidth = 1,
                 Display = true,
-				Title = new ChartJsTitle()
+                // Title of the chart
+                Title = new ChartJsTitle()
                 {
-                    Display = true,
-                    Text = data.Title,
+                    Display = true, // Set to false for hiding the title
+                    Text = "Title",
                     FontSize = 40
                 },
-				Layout = new ChartJsLayout()
+                Layout = new ChartJsLayout()
                 {
+                    // add some space to the chart for better rendering                    
                     Padding = new ChartJsPadding()
                     {
                         Bottom = 0,
@@ -79,10 +81,11 @@ dotnet add package BlazorComponents
                         Top = 50
                     }
                 },
+                // move the legend
 				Legend = new ChartJsLegend()
                 {
                     Position = "top",
-                    Display = false
+                    Display = true // set to false for hiding legend
                 },
 				Scales = new ChartJsScale()
 				{
@@ -106,16 +109,17 @@ dotnet add package BlazorComponents
                             {
                                 BeginAtZero = true,
                                 FontSize = 20,
-                                Max = data.MaximumYValue
+                                Max = 50 // set a maxmimum value for this axis
                             }
                         }
                     }
 				},
 				Plugins = new ChartJsPlugins()
                 {                    
+                    // if you have enabled the plugin you can use these parameters, otherwise it will be ignored
                     Datalabels = new ChartJsDataLabels()
                     {
-                        Align = "start",
+                        Align = "end",
                         Anchor = "end",
                         Color = "black",
                         Display = true,
