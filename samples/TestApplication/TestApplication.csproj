@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <BlazorLinkOnBuild>true</BlazorLinkOnBuild>
     <RunCommand>dotnet</RunCommand>
     <RunArguments>blazor serve</RunArguments>
     <LangVersion>7.3</LangVersion>

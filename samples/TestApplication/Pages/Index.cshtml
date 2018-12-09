@@ -6,7 +6,10 @@
     <div class="row">
         <button class="btn btn-primary" onclick="@UpdateChart">Update Chart </button>
     </div>
-    <ChartJsBarChart ref="barChartJs" Chart="@blazorBarChartJS" Width="600" Height="300" />
+    <ChartJsBarChart ref="barChartJs" Chart="@blazorBarChartJS" Width="600" Height="300" ProcessClickEventResult="ProcessEvent" />
+    <div class="row">
+        Clicked Value: @clickedValue
+    </div>
 </div>
 
 
@@ -14,19 +17,23 @@
 
     public ChartJSBarChart blazorBarChartJS { get; set; } = new ChartJSBarChart();
     ChartJsBarChart barChartJs;
+    public string clickedValue = "";
 
     protected override void OnInit()
     {
+
 
         blazorBarChartJS = new ChartJSBarChart()
         {
             ChartType = "bar",
             CanvasId = "myFirstBarChart",
-            Options = new ChartJsOptions()
+            Options = new ChartJsBarChartOptions()
             {
                 Text = "Sample chart from Blazor",
                 BorderWidth = 1,
                 Display = true,
+                BarPercentage = 0.5,
+                CategoryPercentage = 0.5,
                 // Title of the chart
                 Title = new ChartJsTitle()
                 {
@@ -46,40 +53,40 @@
                     }
                 },
                 // move the legend
-				Legend = new ChartJsLegend()
+                Legend = new ChartJsLegend()
                 {
                     Position = "top",
                     Display = true // set to false for hiding legend
                 },
-				Scales = new ChartJsScale()
-				{
-					XAxes = new List<ChartJsXAxes>()
+                Scales = new ChartJsScale()
+                {
+                    XAxes = new List<ChartJsXAxes>()
+                {
+                    new ChartJsXAxes()
                     {
-                        new ChartJsXAxes()
+                        Ticks = new ChartJsTicks()
                         {
-                            Ticks = new ChartJsTicks()
-                            {
-                                BeginAtZero = true,
-                                FontSize = 20                                    
-                            },
-                            Position = "top"
-                        }
-                    },
-					YAxes = new List<ChartJsYAxes>()
+                            BeginAtZero = true,
+                            FontSize = 20
+                        },
+                        Position = "top"
+                    }
+                },
+                    YAxes = new List<ChartJsYAxes>()
+                {
+                    new ChartJsYAxes()
                     {
-                        new ChartJsYAxes()
+                        Ticks = new ChartJsTicks()
                         {
-                            Ticks = new ChartJsTicks()
-                            {
-                                BeginAtZero = true,
-                                FontSize = 20,
-                                Max = 50 // set a maxmimum value for this axis
-                            }
+                            BeginAtZero = true,
+                            FontSize = 20,
+                            Max = 50 // set a maxmimum value for this axis
                         }
                     }
-				},
-				Plugins = new ChartJsPlugins()
-                {                    
+                }
+                },
+                Plugins = new ChartJsPlugins()
+                {
                     // if you have enabled the plugin you can use these parameters, otherwise it will be ignored
                     Datalabels = new ChartJsDataLabels()
                     {
@@ -98,33 +105,57 @@
             {
                 Labels = new List<string>() { "Red", "Blue", "Yellow", "Green", "Purple", "Orange" },
                 Datasets = new List<ChartJsBarDataset>()
+            {
+                new ChartJsBarDataset()
                 {
-                    new ChartJsBarDataset()
-                    {
-                        Label = "# of Votes from blazor",
-                        BackgroundColor = new List<string>(){"#cc65fe" },
-                        BorderColor = "#cc65fe",
-                        PointHoverRadius = 2,
-                        Data = new List<double>(){ 19.187,12.2253,5.5,3,3,2}
-                    },
-                    new ChartJsBarDataset()
-                    {
-                        Label = "# of Likes from blazor",
-                        BackgroundColor = new List<string>() {
-                            "#a4cef0",
-                            "#3498db",
-                            "#95a5a6",
-                            "#9b59b6",
-                            "#f1c40f",
-                            "#e74c3c",
-                            "#34495e" },
-                        BorderColor = "#36a2eb",
-                        PointHoverRadius = 2,
-                        Data = new List<int>(){ 30,10,15,13,13,12}.Select<int,double>(i=> i).ToList()
-                    }
+                    Label = "# of Votes from blazor",
+                    BackgroundColor = new List<string>(){"#cc65fe" },
+                    BorderColor = "#cc65fe",
+                    PointHoverRadius = 2,
+                    Data = new List<double>(){ 19.187,12.2253,5.5,3,3,2}
+                },
+                new ChartJsBarDataset()
+                {
+                    Label = "# of Likes from blazor",
+                    BackgroundColor = new List<string>() {
+                        "#a4cef0",
+                        "#3498db",
+                        "#95a5a6",
+                        "#9b59b6",
+                        "#f1c40f",
+                        "#e74c3c",
+                        "#34495e" },
+                    BorderColor = "#36a2eb",
+                    PointHoverRadius = 2,
+                    Data = new List<int>(){ 30,10,15,13,13,12}.Select<int,double>(i=> i).ToList()
                 }
             }
+            },
+            //OnClick = (eventResult) =>
+            //{
+            //    if (eventResult.First().DatasetIndex != -1)
+            //    {
+            //        foreach (var item in eventResult)
+            //        {
+            //            _clickedValue += $"Dataset Index: {item.DatasetIndex}, Index: {item.Index} ";
+            //        }
+            //    }
+            //}
         };
+    }
+
+    public async Task ProcessEvent(List<ChartJsEventResult> result)
+    {
+        clickedValue = "";
+        if (result.First().DatasetIndex != -1)
+        {
+            foreach (var item in result)
+            {
+                clickedValue += $"Dataset Index: {item.DatasetIndex}, Index: {item.Index} ";
+            }
+        }
+        StateHasChanged();
+        return;
     }
 
     public async Task<bool> UpdateChart()

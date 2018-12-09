@@ -1,4 +1,6 @@
-﻿using Microsoft.JSInterop;
+﻿using Microsoft.AspNetCore.Blazor;
+using Microsoft.JSInterop;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BlazorComponents.ChartJS
@@ -48,6 +50,10 @@ namespace BlazorComponents.ChartJS
         public static Task<bool> UpdatePieChart(ChartJSPieChart pieChart)
         {
             return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.UpdatePieChart", new[] { pieChart });
+        }
+        public static Task<IEnumerable<ChartJsEventResult>> GetElementsAtEvent(string canvasId, UIMouseEventArgs evt)
+        {
+            return JSRuntime.Current.InvokeAsync<IEnumerable<ChartJsEventResult>>("BlazorComponents.ChartJSInterop.GetElementsAtEvent", new object[] { canvasId,evt});
         }
 
     }

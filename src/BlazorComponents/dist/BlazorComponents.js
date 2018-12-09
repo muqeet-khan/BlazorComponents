@@ -111,6 +111,25 @@ window.BlazorComponents.ChartJSInterop = {
         }
 
         return true;
+    },
+    GetElementsAtEvent: function (canvasId,evt) {
+        let ctx = document.getElementById(canvasId);
+        evt.target = ctx;
+        let myChart = window.BlazorComponents.BlazorCharts.find(currentChart => currentChart.id === canvasId);
+        var result = [];
+        if (myChart) {
+            var values = myChart.chart.getElementsAtEvent(evt);
+            values.map(function (item) {  result.push({ datasetIndex: item._datasetIndex, index: item._index })});
+            if (result.length < 1) {
+                result.push({ datasetIndex: -1, index: -1 });
+            }
+            return result;
+        }
+        else {
+            result.push({ datasetIndex: -1, index: -1 });
+        }
+        return result;
+
     }
     //UpdateLineChart: function (data) {
 

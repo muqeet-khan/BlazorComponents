@@ -27,6 +27,5 @@ namespace BlazorComponents.Shared
         {
             ChartJSInterop.UpdateSize(GetChart().CanvasId, newWidth, newHeight);
         }
-
     }
 }
