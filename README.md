@@ -63,19 +63,72 @@ dotnet add package BlazorComponents
                 Text = "Sample chart from Blazor",
                 BorderWidth = 1,
                 Display = true,
+                // Title of the chart
+                Title = new ChartJsTitle()
+                {
+                    Display = true, // Set to false for hiding the title
+                    Text = "Title",
+                    FontSize = 40
+                },
+                Layout = new ChartJsLayout()
+                {
+                    // add some space to the chart for better rendering                    
+                    Padding = new ChartJsPadding()
+                    {
+                        Bottom = 0,
+                        Left = 0,
+                        Right = 0,
+                        Top = 50
+                    }
+                },
+                // move the legend
+				Legend = new ChartJsLegend()
+                {
+                    Position = "top",
+                    Display = true // set to false for hiding legend
+                },
 				Scales = new ChartJsScale()
 				{
+					XAxes = new List<ChartJsXAxes>()
+                    {
+                        new ChartJsXAxes()
+                        {
+                            Ticks = new ChartJsTicks()
+                            {
+                                BeginAtZero = true,
+                                FontSize = 20                                    
+                            },
+                            Position = "top"
+                        }
+                    },
 					YAxes = new List<ChartJsYAxes>()
-					{
-						new ChartJsYAxes()
-						{
-							Ticks = new ChartJsTicks()
-							{
-								BeginAtZero = true
-							}
-						}
-					}
-				}
+                    {
+                        new ChartJsYAxes()
+                        {
+                            Ticks = new ChartJsTicks()
+                            {
+                                BeginAtZero = true,
+                                FontSize = 20,
+                                Max = 50 // set a maxmimum value for this axis
+                            }
+                        }
+                    }
+				},
+				Plugins = new ChartJsPlugins()
+                {                    
+                    // if you have enabled the plugin you can use these parameters, otherwise it will be ignored
+                    Datalabels = new ChartJsDataLabels()
+                    {
+                        Align = "end",
+                        Anchor = "end",
+                        Color = "black",
+                        Display = true,
+                        Font = new ChartJsDataLabelsFont()
+                        {
+                            Size = 20
+                        }
+                    }
+                }
             },
             Data = new ChartJsBarData()
             {
@@ -141,6 +194,12 @@ dotnet add package BlazorComponents
     <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <script type="blazor-boot">
     </script>
+```
+
+2.1. For using the data label plugin add this, too:
+
+``` html
+	<script src="//cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
 ```
 
 3. In _ViewImports.cshtml add:

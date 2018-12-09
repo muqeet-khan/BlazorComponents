@@ -10,6 +10,11 @@ namespace BlazorComponents.ChartJS
             return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.InitializeLineChart", new[] { lineChart });
         }
 
+        public static Task<bool> UpdateSize(string canvasId, int newWidth, int newHeight)
+        {
+            return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.UpdateSize", new object[] { canvasId, newWidth, newHeight });
+        }
+
         public static Task<bool> InitializeBarChart(ChartJSBarChart barChart)
         {
             return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.InitializeBarChart", new[] { barChart });
@@ -44,5 +49,6 @@ namespace BlazorComponents.ChartJS
         {
             return JSRuntime.Current.InvokeAsync<bool>("BlazorComponents.ChartJSInterop.UpdatePieChart", new[] { pieChart });
         }
+
     }
 }

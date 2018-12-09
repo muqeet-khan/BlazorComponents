@@ -1,21 +1,17 @@
 ﻿@using BlazorComponents.ChartJS
 @using Microsoft.AspNetCore.Blazor.Components
 
+@inherits ChartBase
+
 <div class="row">
     <div class="container">
         <canvas id="@Chart.CanvasId" width="@Width" height="@Height"></canvas>
     </div>
 </div>
-
 @functions {
 
     [Parameter]
     ChartJSLineChart Chart { get; set; }
-    [Parameter]
-    int Width { get; set; } = 200;
-    [Parameter]
-    int Height { get; set; } = 200;
-    private string ChartjsChart { get; set; } = "";
 
     protected override void OnAfterRender()
     {
@@ -31,4 +27,10 @@
     {
         ChartJSInterop.UpdateLineChart(updatedChart);
     }
+
+    protected override IChart GetChart()
+    {
+        return Chart;
+    }
+
 }

@@ -1,7 +1,6 @@
 ﻿
 window.BlazorComponents = window.BlazorComponents || {};
 window.BlazorComponents.BlazorCharts = [];
-console.log(window.BlazorComponents.BlazorCharts);
 window.BlazorComponents.ChartJSInterop = {
     InitializeBarChart: function (data) {
         if (window.BlazorComponents.BlazorCharts.length > 0) {
@@ -103,6 +102,15 @@ window.BlazorComponents.ChartJSInterop = {
         }
 
         return true;
+    },
+    UpdateSize: function (canvasId, newWidth, newHeight) {
+        let ctx = document.getElementById(canvasId);
+        if (ctx) {
+            ctx.width = newWidth;
+            ctx.height = newHeight;
+        }
+
+        return true;
     }
     //UpdateLineChart: function (data) {
 
@@ -139,7 +147,6 @@ function initializeChartjsChart(data, type) {
 
     data.data.datasets.forEach((item, i) => {
         if (item.backgroundColor.length === 1) {
-            console.log(item);
             item.backgroundColor = item.backgroundColor[0];
         }
 
